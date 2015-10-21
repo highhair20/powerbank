@@ -39,7 +39,12 @@
   SPI (Serial Peripheral Interface) bus on digital pins 11, 12, and 13.
 */
 
-#include "Timer.h"
+#include <Event.h>
+#include <Timer.h>
+
+
+Timer t;
+int flashEvents[8];
 
 int pins[8] = {
   2,  // Plug 1
@@ -52,28 +57,39 @@ int pins[8] = {
   A4  // Plug 8
 };
 int level[] = {HIGH, LOW};
-int pinNum = sizeof( pins ) / sizeof( int );
+int numPins = sizeof( pins ) / sizeof( int );
 
 void setup() {
   Serial.begin(9600);
   Serial.println("Cycle - begin setup");
-  Serial.print("sizeof pins: ");
-  Serial.println(pinNum);
-  for (int i  = 0; i < sizeof(pins); i++) {
+
+  // set the pin modes
+  Serial.println(numPins);
+  for (int i  = 0; i < numPins; i++) {
     pinMode(pins[i], OUTPUT);
   }
-  for (int i = 0; i < 4; i++) {
-    for (int j = 0; j < sizeof(pins); j++) {
-      digitalWrite(pins[j], level[i % 2]);
-    }
-    delay(500);
+
+  // test flash
+  flashAll();
+  
+  //
+  t.every(1000 * 10, flicker);
+}
+
+
+void loop() {
+  t.update();
+}
+
+
+void flashAll() {
+  for (int i = 0; i < numPins; i++) {
+    flashEvents[i] = t.oscillate(pins[i], 250, LOW, 3);
   }
 }
 
-void loop() {
-  for (int i  = 0; i < pinNum; i++) {
-    digitalWrite(pins[i], level[0]);
-    delay(100);
-    digitalWrite(pins[i], level[1]);
-  }
+
+void flicker() {
+  t.oscillate(2, 10, LOW, 200);
 }
+

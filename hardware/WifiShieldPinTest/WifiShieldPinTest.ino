@@ -12,9 +12,23 @@ void setup() {
 }
 
 void loop() {
-  int outPin = A4;
-  digitalWrite(outPin, HIGH);
+  digitalWrite(2, HIGH);
+  digitalWrite(3, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(8, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(A5, HIGH);
+  digitalWrite(A4, HIGH);
   delay(500);
-  digitalWrite(outPin, LOW);
+  digitalWrite(2, LOW);
+  digitalWrite(3, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(6, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(9, LOW);
+  digitalWrite(A5, LOW);
+  digitalWrite(A4, LOW);
   delay(500);
+  
 }
