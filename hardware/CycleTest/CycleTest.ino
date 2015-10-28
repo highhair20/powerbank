@@ -1,5 +1,5 @@
 /*
-  PowerStrip
+  CycleTest
 
   Circuit:
   * Arduino Uno
@@ -30,13 +30,11 @@
                   Plug 7 -| A5 (SCL)        RX<- 0 |-
                           --------------------------
 
-  created 2015.09.28
-  by Jason Kelly
-
-  This code is in the public domain.
-
   Arduino communicates with the WiFi shield using the
   SPI (Serial Peripheral Interface) bus on digital pins 11, 12, and 13.
+
+  Created 2015.09.28
+  by Jason Kelly
 */
 
 #include <Event.h>
@@ -69,11 +67,20 @@ void setup() {
     pinMode(pins[i], OUTPUT);
   }
 
-  // test flash
-  flashAll();
+  // set high
+  digitalWrite(5, HIGH);
+  digitalWrite(6, HIGH);
+  digitalWrite(8, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(A5, HIGH);
+  digitalWrite(A4, HIGH);
   
+//  // test flash
+//  flashAll();
+
   //
-  t.every(1000 * 10, flicker);
+  t.every(1000 * 30, flicker);
+  
 }
 
 
@@ -90,6 +97,6 @@ void flashAll() {
 
 
 void flicker() {
-  t.oscillate(2, 10, LOW, 200);
+  t.oscillate(2, 25, LOW, 200);
+  t.oscillate(3, 25, LOW, 200);
 }
-

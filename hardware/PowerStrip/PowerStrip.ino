@@ -30,17 +30,16 @@
                   Plug 7 -| A5 (SCL)        RX<- 0 |-
                           --------------------------
 
+
+  Arduino communicates with the WiFi shield using the
+  SPI (Serial Peripheral Interface) bus on digital pins 11, 12, and 13.
+
+  Retrieve program to run plugs.
+
   created 2015.09.28
   by Jason Kelly
-
-  This code is in the public domain.
 */
 
-
-// Arduino communicates with the WiFi shield using the
-// SPI (Serial Peripheral Interface) bus on digital pins 11, 12, and 13.
-//
-// 1. retrieve program to run plugs.
 #include <SPI.h>
 #include <WiFi.h>
 #include <ArduinoJson.h>
@@ -59,7 +58,7 @@ int status = WL_IDLE_STATUS;
 // Initialize the Wifi client library (port 90 is default)
 // WiFiClient client;
 
-// last time you connected to the server, in milliseconds
+// last time we connected to the server, in milliseconds
 unsigned long lastConnectionTime = 0;
 // delay between updates, in milliseconds
 const unsigned long configInterval = 10L * 1000L;
