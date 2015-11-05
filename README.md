@@ -1,1 +1,1 @@
-# powerstrip
+# PowerBank

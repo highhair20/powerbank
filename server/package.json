@@ -7,10 +7,18 @@
     "koa": "^1.1.0"
   },
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+
+  "engines": {
+    "node": "0.11.x"
   },
-  "author": "",
+  "scripts": {
+    "preinstall": "echo Installing powerbank app",
+    "start": "node --harmony index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "echo Installation complete!"
+  },
+
+  "author": "Jason Kelly",
   "license": "ISC",
   "description": ""
 }
